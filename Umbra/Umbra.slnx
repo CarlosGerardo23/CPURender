@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Umbra.vcxproj" />
+  <Project Path="Umbra.vcxproj" Id="bc74b319-849c-4b20-bef9-b26bbbb3bd57" />
 </Solution>
