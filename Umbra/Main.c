@@ -10,9 +10,9 @@ SDL_Renderer* renderer = NULL;
 bool is_running = false;
 bool initialize_window(void)
 {
-	if(SDL_Init(SDL_INIT_VIDEO)!=0)
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
-		fprintf(stderr , "Error initializing SDL.\n");
+		fprintf(stderr, "Error initializing SDL: %s\n", SDL_GetError());
 		return false;
 	}
 	//Create window
