@@ -21,7 +21,7 @@ jobs:
       - name: Build web version
         run: |
           mkdir -p build/web
-          emcc Umbra/Main.c --use-port=sdl2 -o build/web/index.html
+          emcc Main.c --use-port=sdl2 -o build/web/index.html
           ls -la build/web
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
