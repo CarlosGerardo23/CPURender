@@ -112,6 +112,6 @@ int main(int argc, char* args[])
 	}
 #endif
 
-	destry_window();
+	destroy_window();
 	return 0;
 }
