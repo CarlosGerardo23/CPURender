@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <SDL.h>
 #include <stdbool.h>
-
+#ifdef __EMSCRIPTEN__
+#include <emscripten/emscripten.h>
+#endif
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 
@@ -65,15 +67,23 @@ void render()
 	SDL_RenderClear(renderer);
 	SDL_RenderPresent(renderer);
 }
+void game_loop()
+{
+	process_input();
+	update();
+	render();
+}
 int main(int argc, char* args[])
 {
 	is_running = initialize_window();
 	setup();
+#ifdef __EMSCRIPTEN__
+	emscripten_set_main_loop(game_loop, 0, 1);
+#else
 	while (is_running)
 	{
-		process_input();
-		update();
-		render();
+		game_loop();
 	}
+#endif
 	return 0;
 }
