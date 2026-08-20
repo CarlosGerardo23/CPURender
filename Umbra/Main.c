@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 #include <SDL.h>
 #include <stdbool.h>
 #ifdef __EMSCRIPTEN__
@@ -8,6 +9,11 @@ SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 
 bool is_running = false;
+
+uint32_t* color_buffer = NULL;
+
+int window_width = 800;
+int window_height = 600;
 bool initialize_window(void)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
@@ -16,7 +22,7 @@ bool initialize_window(void)
 		return false;
 	}
 	//Create window
-	window = SDL_CreateWindow(NULL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_BORDERLESS);
+	window = SDL_CreateWindow(NULL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, SDL_WINDOW_BORDERLESS);
 
 	if(!window)
 	{
@@ -33,9 +39,9 @@ bool initialize_window(void)
 	}
 	return true;
 }
-void setup()
+void setup(void)
 {
-	//TO DO:
+	color_buffer = (uint32_t*) malloc(sizeof(uint32_t) * window_width * window_height);
 }
 void process_input()
 {
@@ -67,12 +73,32 @@ void render()
 	SDL_RenderClear(renderer);
 	SDL_RenderPresent(renderer);
 }
-void game_loop()
+void game_loop(void)
 {
 	process_input();
 	update();
 	render();
 }
+void destroy_window(void)
+{
+	free(color_buffer);
+    color_buffer = NULL;
+
+    if (renderer)
+    {
+        SDL_DestroyRenderer(renderer);
+        renderer = NULL;
+    }
+
+    if (window)
+    {
+        SDL_DestroyWindow(window);
+        window = NULL;
+    }
+
+    SDL_Quit();
+}
+
 int main(int argc, char* args[])
 {
 	is_running = initialize_window();
@@ -85,5 +111,7 @@ int main(int argc, char* args[])
 		game_loop();
 	}
 #endif
+
+	destry_window();
 	return 0;
 }
