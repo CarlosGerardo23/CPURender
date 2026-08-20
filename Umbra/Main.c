@@ -63,14 +63,26 @@ void process_input()
 		break;
 	}
 }
-void update()
+void update(void)
 {
 	//TO DO:
 }
-void render()
+void clear_color_buffer(uint32_t color)
+{
+	for(int y = 0; y < window_height; y ++)
+	{
+		for(int x = 0; x < window_width; x++)
+		{
+			color_buffer[(window_width*y) + x] = color
+		}
+	}
+}
+void render(void)
 {
 	SDL_SetRenderDrawColor(renderer, 0, 200, 100, 255);
 	SDL_RenderClear(renderer);
+
+	clear_color_buffer(0xFFFFFF00);
 	SDL_RenderPresent(renderer);
 }
 void game_loop(void)
