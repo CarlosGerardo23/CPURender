@@ -77,6 +77,19 @@ void process_input()
 		break;
 	}
 }
+void draw_grid(int grid_size)
+{
+	for (int y = 0; y < window_height; y++)
+	{
+		for (int x = 0; x < window_width; x++)
+		{
+			if (y % grid_size == 0 || x % grid_size == 0)
+			{
+				color_buffer[(window_width * y) + x] = 0xFFFFFFFF; // Black color
+			}
+		}
+	}
+}
 void update(void)
 {
 	//TO DO:
@@ -101,8 +114,10 @@ void render(void)
 	SDL_SetRenderDrawColor(renderer, 0, 200, 100, 255);
 	SDL_RenderClear(renderer);
     
+	draw_grid(50);
+
 	render_color_buffer();
-	clear_color_buffer(0xFFFFFF00);
+	clear_color_buffer(0xFF000000);
 	SDL_RenderPresent(renderer);
 }
 void game_loop(void)
