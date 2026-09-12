@@ -125,7 +125,7 @@ void render(void)
 	SDL_RenderClear(renderer);
     
 	//draw_grid(50);
-	draw_rect(300,300,500,500, 0x5F9EA0);
+	draw_rect(300,300,500,500, 0xFFFFFFFF);
 	render_color_buffer();
 	clear_color_buffer(0xFF000000);
 	SDL_RenderPresent(renderer);
