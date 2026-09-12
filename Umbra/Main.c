@@ -85,8 +85,18 @@ void draw_grid(int grid_size)
 		{
 			if (y % grid_size == 0 || x % grid_size == 0)
 			{
-				color_buffer[(window_width * y) + x] = 0xFFFFFFFF; // Black color
+				color_buffer[(window_width * y) + x] = 0xFFFFFFFF; 
 			}
+		}
+	}
+}
+void draw_rect(int x, int y, int width, int height, uint32_t color)
+{
+	for(int height = y; y < height; y++)
+	{
+		for(int width = x; x < width; x++)
+		{				
+			color_buffer[(window_width * y) + x] = color;
 		}
 	}
 }
@@ -114,8 +124,8 @@ void render(void)
 	SDL_SetRenderDrawColor(renderer, 0, 200, 100, 255);
 	SDL_RenderClear(renderer);
     
-	draw_grid(50);
-
+	//draw_grid(50);
+	draw_rect(300,300,500,500, 0x5F9EA0);
 	render_color_buffer();
 	clear_color_buffer(0xFF000000);
 	SDL_RenderPresent(renderer);
