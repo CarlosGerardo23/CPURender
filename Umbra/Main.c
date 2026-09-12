@@ -92,11 +92,13 @@ void draw_grid(int grid_size)
 }
 void draw_rect(int x, int y, int width, int height, uint32_t color)
 {
-	for(int rectHeight = y; rectHeight < height; rectHeight++)
+	for(int i = 0; i < height; i++)
 	{
-		for(int rectWidth = x; rectWidth < width; rectWidth++)
+		for(int j = 0; j < width; j++)
 		{				
-			color_buffer[(window_width * rectHeight) + rectWidth] = color;
+			int currentX = j+x;
+			int currentY = i+y;
+			color_buffer[(window_width * currentY) + currentX] = color;
 		}
 	}
 }
