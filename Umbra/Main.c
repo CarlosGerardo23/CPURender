@@ -92,9 +92,9 @@ void draw_grid(int grid_size)
 }
 void draw_rect(int x, int y, int width, int height, uint32_t color)
 {
-	for(int height = y; y < height; y++)
+	for(int height = y; y < window_height; y++)
 	{
-		for(int width = x; x < width; x++)
+		for(int width = x; x < window_width; x++)
 		{				
 			color_buffer[(window_width * height) + width] = color;
 		}
