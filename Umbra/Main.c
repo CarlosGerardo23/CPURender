@@ -96,6 +96,7 @@ void draw_rect(int x, int y, int width, int height, uint32_t color)
 	{
 		for(int j = x; j < x + width; j++)
 		{				
+			printf("Fila i: %d | Columna j: %d\n", i, j);
 			color_buffer[(window_width * i) + j] = color;
 		}
 	}
