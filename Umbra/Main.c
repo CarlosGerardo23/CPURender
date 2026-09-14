@@ -28,7 +28,7 @@ bool initialize_window(void)
 	
 	SDL_DisplayMode display_mode;
 	SDL_GetCurrentDisplayMode(0, &display_mode);
-
+	printf("W %d | H %d\n", display_mode.w, display_mode.h);
 	window_width = display_mode.w;
 	window_height = display_mode.h;
 
