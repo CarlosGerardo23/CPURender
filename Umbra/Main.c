@@ -25,12 +25,14 @@ bool initialize_window(void)
 		return false;
 	}
 	// Use SDL to query the current display mode and set the window width and height accordingly
-	
+	#ifndef __EMSCRIPTEN__
 	SDL_DisplayMode display_mode;
 	SDL_GetCurrentDisplayMode(0, &display_mode);
 	printf("W %d | H %d\n", display_mode.w, display_mode.h);
 	window_width = display_mode.w;
 	window_height = display_mode.h;
+	#endif
+	
 
 	//Create window
 	window = SDL_CreateWindow(NULL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, SDL_WINDOW_BORDERLESS);
