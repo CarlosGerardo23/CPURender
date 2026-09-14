@@ -125,10 +125,10 @@ void render(void)
 	SDL_SetRenderDrawColor(renderer, 0, 200, 100, 255);
 	SDL_RenderClear(renderer);
     
-	//draw_grid(50);
-	draw_rect(300,200,300,150, 0xFFFF00FF);
-	render_color_buffer();
 	clear_color_buffer(0xFF000000);
+	draw_grid(50);
+	//draw_rect(300,200,300,150, 0xFFFF00FF);
+	render_color_buffer();
 	SDL_RenderPresent(renderer);
 }
 void game_loop(void)
