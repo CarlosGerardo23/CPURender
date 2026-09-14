@@ -90,7 +90,7 @@ void draw_grid(int grid_size)
 		}
 	}
 }
-void draw_rect(int x, int y, int width, int height, uint32_t color)
+/*void draw_rect(int x, int y, int width, int height, uint32_t color)
 {
 	for(int i = y; i < y + height; i++)
 	{
@@ -100,7 +100,7 @@ void draw_rect(int x, int y, int width, int height, uint32_t color)
 			color_buffer[(window_width * i) + j] = color;
 		}
 	}
-}
+}*/
 void update(void)
 {
 	//TO DO:
@@ -125,10 +125,10 @@ void render(void)
 	SDL_SetRenderDrawColor(renderer, 0, 200, 100, 255);
 	SDL_RenderClear(renderer);
     
-	clear_color_buffer(0xFF000000);
 	draw_grid(50);
 	//draw_rect(300,200,300,150, 0xFFFF00FF);
 	render_color_buffer();
+	clear_color_buffer(0xFF000000);
 	SDL_RenderPresent(renderer);
 }
 void game_loop(void)
