@@ -9,7 +9,6 @@
 #endif
 
 SDL_Window* window = NULL;
-SDL_Renderer* renderer = NULL;
 
 int window_width = 1000;
 int window_height = 1000;
