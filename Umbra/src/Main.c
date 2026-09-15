@@ -5,8 +5,7 @@
 #ifdef __EMSCRIPTEN__
 #include <emscripten/emscripten.h>
 #endif
-SDL_Window* window = NULL;
-SDL_Renderer* renderer = NULL;
+
 
 bool is_running = false;
 
@@ -17,44 +16,44 @@ int window_height = 1000;
 
 SDL_Texture* color_buffer_texture = NULL;
 
-bool initialize_window(void)
-{
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
-	{
-		fprintf(stderr, "Error initializing SDL: %s\n", SDL_GetError());
-		return false;
-	}
-	// Use SDL to query the current display mode and set the window width and height accordingly
-	#ifndef __EMSCRIPTEN__
-	SDL_DisplayMode display_mode;
-	SDL_GetCurrentDisplayMode(0, &display_mode);
-	printf("W %d | H %d\n", display_mode.w, display_mode.h);
-	window_width = display_mode.w;
-	window_height = display_mode.h;
-	#endif
+// bool initialize_window(void)
+// {
+// 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+// 	{
+// 		fprintf(stderr, "Error initializing SDL: %s\n", SDL_GetError());
+// 		return false;
+// 	}
+// 	// Use SDL to query the current display mode and set the window width and height accordingly
+// 	#ifndef __EMSCRIPTEN__
+// 	SDL_DisplayMode display_mode;
+// 	SDL_GetCurrentDisplayMode(0, &display_mode);
+// 	printf("W %d | H %d\n", display_mode.w, display_mode.h);
+// 	window_width = display_mode.w;
+// 	window_height = display_mode.h;
+// 	#endif
 	
 
-	//Create window
-	window = SDL_CreateWindow(NULL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, SDL_WINDOW_BORDERLESS);
+// 	//Create window
+// 	window = SDL_CreateWindow(NULL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, SDL_WINDOW_BORDERLESS);
 
-	if(!window)
-	{
-		fprintf(stderr, "Error creating SDL Window\n");
-		return false;
-	}
+// 	if(!window)
+// 	{
+// 		fprintf(stderr, "Error creating SDL Window\n");
+// 		return false;
+// 	}
 
-	//Create a SDL renderer
-	renderer = SDL_CreateRenderer(window, -1, 0);
-	if(!renderer)
-	{
-		fprintf(stderr, "Error creating SDL Renderer\n");
-		return false;
-	}
-	#ifndef __EMSCRIPTEN__
-	SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
-	#endif
-	return true;
-}
+// 	//Create a SDL renderer
+// 	renderer = SDL_CreateRenderer(window, -1, 0);
+// 	if(!renderer)
+// 	{
+// 		fprintf(stderr, "Error creating SDL Renderer\n");
+// 		return false;
+// 	}
+// 	#ifndef __EMSCRIPTEN__
+// 	SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+// 	#endif
+// 	return true;
+// }
 void setup(void)
 {
 	color_buffer_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, window_width, window_height);
@@ -151,11 +150,11 @@ void destroy_window(void)
         renderer = NULL;
     }
 
-    if (window)
-    {
-        SDL_DestroyWindow(window);
-        window = NULL;
-    }
+    // if (window)
+    // {
+    //     SDL_DestroyWindow(window);
+    //     window = NULL;
+    // }
 
     SDL_Quit();
 }
