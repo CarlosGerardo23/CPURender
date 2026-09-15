@@ -2,11 +2,16 @@
 #include <stdint.h>
 #include <SDL.h>
 #include <stdbool.h>
+
+#include "renderer.h"
+#include "window.h"
+#include "raw_sprite.h"
+
 #ifdef __EMSCRIPTEN__
 #include <emscripten/emscripten.h>
 #endif
 
-
+bool is_running;
 
 void process_input()
 {
@@ -33,16 +38,7 @@ void update(void)
 {
 	//TO DO:
 }
-void clear_color_buffer(uint32_t color)
-{
-	for(int y = 0; y < window_height; y ++)
-	{
-		for(int x = 0; x < window_width; x++)
-		{
-			color_buffer[(window_width*y) + x] = color;
-		}
-	}
-}
+
 void render_color_buffer(void)
 {
 	SDL_UpdateTexture(color_buffer_texture, NULL, color_buffer, (int)(window_width * sizeof(uint32_t)));
@@ -67,28 +63,23 @@ void game_loop(void)
 }
 void destroy_window(void)
 {
-	free(color_buffer);
-    color_buffer = NULL;
+	destroy_renderer();
+	destroy_window();
+}
 
-    if (renderer)
-    {
-        SDL_DestroyRenderer(renderer);
-        renderer = NULL;
-    }
+bool initialize()
+{
+	bool result = false;
 
-    // if (window)
-    // {
-    //     SDL_DestroyWindow(window);
-    //     window = NULL;
-    // }
-
-    SDL_Quit();
+	result = initialize_window();
+	result = initialize_renderer(window);
+	return result;
 }
 
 int main(int argc, char* args[])
 {
-	is_running = initialize_window();
-	setup();
+	is_running = initialize();
+	setup_texture();
 #ifdef __EMSCRIPTEN__
 	emscripten_set_main_loop(game_loop, 0, 1);
 #else
