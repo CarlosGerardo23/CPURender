@@ -1,5 +1,7 @@
 #include "renderer.h"
-
+uint32_t* color_buffer = NULL;
+SDL_Texture* color_buffer_texture = NULL;
+SDL_Renderer* renderer = NULL; 
 bool initialize_renderer(SDL_Window* window)
 {
     renderer = SDL_CreateRenderer(window, -1 , 0);
@@ -13,10 +15,10 @@ bool initialize_renderer(SDL_Window* window)
 
 void setup_texture(int window_width, int window_height)
 {
-    color_buffer = (uint32_t)* malloc(sizeof(uint32_t) * window_width * window_height);
+    color_buffer = (uint32_t*) malloc(sizeof(uint32_t) * window_width * window_height);
     color_buffer_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, window_width, window_height);
 }
-void render_color_buffer(void);
+void render_color_buffer(int window_width)
 {
     SDL_UpdateTexture(color_buffer_texture, NULL, color_buffer, (int)(window_width*sizeof(uint32_t)));
     SDL_RenderCopy(renderer, color_buffer_texture,NULL,NULL);

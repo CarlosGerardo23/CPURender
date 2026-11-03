@@ -8,10 +8,9 @@
 #include <emscripten/emscripten.h>
 #endif
 
-SDL_Window* window = NULL;
-
-int window_width = 1000;
-int window_height = 1000;
+extern SDL_Window* window;
+extern int window_width;
+extern int window_height;
 
 bool initialize_window(void);
 void destroy_window(void);

@@ -38,21 +38,15 @@ void update(void)
 {
 	//TO DO:
 }
-
-void render_color_buffer(void)
-{
-	SDL_UpdateTexture(color_buffer_texture, NULL, color_buffer, (int)(window_width * sizeof(uint32_t)));
-	SDL_RenderCopy(renderer, color_buffer_texture, NULL, NULL);
-}
 void render(void)
 {
 	SDL_SetRenderDrawColor(renderer, 0, 200, 100, 255);
 	SDL_RenderClear(renderer);
-    
+
 	//draw_grid(50);
-	draw_rect(50,0,400,400, 0xFFFF00FF);
-	render_color_buffer();
-	clear_color_buffer(0xFF000000);
+	draw_rect(color_buffer, window_width, window_height, 0, 400, 400, 400, 0xFFFF00FF);
+	render_color_buffer(window_width);
+	clear_color_buffer(0xFF000000, window_width, window_height);
 	SDL_RenderPresent(renderer);
 }
 void game_loop(void)
@@ -79,7 +73,7 @@ bool initialize()
 int main(int argc, char* args[])
 {
 	is_running = initialize();
-	setup_texture();
+	setup_texture(window_width, window_height);
 #ifdef __EMSCRIPTEN__
 	emscripten_set_main_loop(game_loop, 0, 1);
 #else
