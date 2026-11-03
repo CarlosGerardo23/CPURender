@@ -5,9 +5,9 @@
 #include <SDL.h>
 #include <stdbool.h>
 
-uint32_t* color_buffer;
-SDL_Texture* color_buffer_texture;
-SDL_Renderer* renderer;
+extern uint32_t* color_buffer;
+extern SDL_Texture* color_buffer_texture;
+extern SDL_Renderer* renderer;
 
 bool initialize_renderer(SDL_Window* window);
 void setup_texture(int window_width, int window_height);

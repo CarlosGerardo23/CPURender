@@ -42,11 +42,6 @@ void render(void)
 {
 	SDL_SetRenderDrawColor(renderer, 0, 200, 100, 255);
 	SDL_RenderClear(renderer);
-
-	//draw_grid(50);
-	draw_rect(color_buffer, window_width, window_height, 0, 400, 400, 400, 0xFFFF00FF);
-	render_color_buffer(window_width);
-	clear_color_buffer(0xFF000000, window_width, window_height);
 	SDL_RenderPresent(renderer);
 }
 void game_loop(void)
@@ -82,7 +77,5 @@ int main(int argc, char* args[])
 		game_loop();
 	}
 #endif
-
-	destroy_window();
 	return 0;
 }
