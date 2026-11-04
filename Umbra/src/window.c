@@ -20,3 +20,12 @@ bool initialize_window(void)
 	}
 	return true;
 }
+
+void destroy_window (void)
+{
+	if(window)
+	{
+		SDL_DestroyWindow(window);
+		window = NULL;
+	}
+}

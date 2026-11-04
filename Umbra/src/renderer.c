@@ -16,7 +16,7 @@ bool initialize_renderer(SDL_Window* window)
 void setup_texture(int window_width, int window_height)
 {
     color_buffer = (uint32_t*) malloc(sizeof(uint32_t) * window_width * window_height);
-    color_buffer_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, window_width, window_height);
+    //color_buffer_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, window_width, window_height);
 }
 void render_color_buffer(int window_width)
 {

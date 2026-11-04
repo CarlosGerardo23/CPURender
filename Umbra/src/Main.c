@@ -65,6 +65,12 @@ bool initialize()
 	return result;
 }
 
+void destroy(void)
+{
+	destroy_renderer();
+	destroy_window();
+	SDL_QUIT();
+}
 int main(int argc, char* args[])
 {
 	is_running = initialize();
@@ -77,5 +83,6 @@ int main(int argc, char* args[])
 		game_loop();
 	}
 #endif
+    destroy();
 	return 0;
 }
