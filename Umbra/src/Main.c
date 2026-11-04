@@ -50,12 +50,6 @@ void game_loop(void)
 	update();
 	render();
 }
-void destroy_window(void)
-{
-	destroy_renderer();
-	destroy_window();
-}
-
 bool initialize()
 {
 	bool result = false;
