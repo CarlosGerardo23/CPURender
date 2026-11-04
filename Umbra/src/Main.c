@@ -69,7 +69,7 @@ void destroy(void)
 {
 	destroy_renderer();
 	destroy_window();
-	SDL_QUIT();
+	SDL_Quit();
 }
 int main(int argc, char* args[])
 {
