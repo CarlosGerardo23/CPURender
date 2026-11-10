@@ -14,5 +14,6 @@ extern int window_height;
 
 bool initialize_window(void);
 void destroy_window(void);
-
+bool initialize_window_web(void);
+bool initialize_window_desktop(void);
 #endif
