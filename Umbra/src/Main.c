@@ -40,9 +40,10 @@ void update(void)
 }
 void render(void)
 {
-	SDL_SetRenderDrawColor(renderer, 0, 200, 100, 255);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
-	clear_color_buffer(0xFFFFFF00);
+	render_color_buffer(window_width);
+	clear_color_buffer(0xFFFFFF00, window_width, window_height);
 	SDL_RenderPresent(renderer);
 }
 void game_loop(void)
