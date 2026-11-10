@@ -42,6 +42,7 @@ void render(void)
 {
 	SDL_SetRenderDrawColor(renderer, 0, 200, 100, 255);
 	SDL_RenderClear(renderer);
+	clear_color_buffer(0xFFFFFF00);
 	SDL_RenderPresent(renderer);
 }
 void game_loop(void)
