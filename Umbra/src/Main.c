@@ -44,6 +44,7 @@ void render(void)
 	SDL_RenderClear(renderer);
 	render_color_buffer(window_width);
 	clear_color_buffer(0xFFFFFF00, window_width, window_height);
+	draw_grid(color_buffer, window_width, window_height, 10, 0xFFFFFFFF);
 	SDL_RenderPresent(renderer);
 }
 void game_loop(void)
