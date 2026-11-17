@@ -14,5 +14,5 @@ void setup_texture(int window_width, int window_height);
 void clear_color_buffer(uint32_t color, int window_width, int window_height);
 void render_color_buffer(int window_width);
 void destroy_renderer(void);
-void draw_pixel(void);
+void draw_pixel(int x, int y, uint32_t color);
 #endif
