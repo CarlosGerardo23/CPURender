@@ -33,10 +33,6 @@ void clear_color_buffer(uint32_t color, int window_width, int window_height)
         }
     }
 }
-void draw_pixel(int window_height, int x, int y, uint32_t color)
-{ 
-    color_buffer[(window_height * y) + x] = color;
-}
 void destroy_renderer(void)
 {
     free(color_buffer);

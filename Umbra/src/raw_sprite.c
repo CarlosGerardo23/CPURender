@@ -24,3 +24,7 @@ void draw_rect(uint32_t *color_buffer, int window_width, int window_height, int 
 		}
 	}
 }
+void draw_pixel(uint32_t *color_buffer, int window_height, int x, int y, uint32_t color)
+{ 
+    color_buffer[(window_height * y) + x] = color;
+}
