@@ -40,7 +40,7 @@ void update(void)
 }
 void render(void)
 {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	SDL_RenderClear(renderer);
 	render_color_buffer(window_width);
 	clear_color_buffer(0xFF000000, window_width, window_height);
