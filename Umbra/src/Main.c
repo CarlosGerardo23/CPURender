@@ -7,6 +7,7 @@
 #include "window.h"
 #include "raw_sprite.h"
 
+#include "vector.h"
 #ifdef __EMSCRIPTEN__
 #include <emscripten/emscripten.h>
 #endif
@@ -74,6 +75,8 @@ int main(int argc, char* args[])
 {
 	is_running = initialize();
 	setup_texture(window_width, window_height);
+
+	vec3_t test = {2.0, 1.0, -1.0};
 #ifdef __EMSCRIPTEN__
 	emscripten_set_main_loop(game_loop, 0, 1);
 #else
