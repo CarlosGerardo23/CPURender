@@ -25,11 +25,13 @@ void render_color_buffer(int window_width)
 }
 void clear_color_buffer(uint32_t color, int window_width, int window_height)
 {
-    for(int i = 0; i < window_height; i++)
+    int i = 0;
+    int j = 0;
+    for( i = 0; i < window_height; i++)
     {
-        for(int j = 0; j < window_width; j++)
+        for( j = 0; j < window_width; j++)
         {
-            color_buffer[(window_height*i)+j] = color;
+            color_buffer[(window_width *i)+j] = color;
         }
     }
 }

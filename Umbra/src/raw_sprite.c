@@ -8,7 +8,7 @@ void draw_grid(uint32_t *color_buffer, int window_width, int window_height, int 
 		{
 			if (i % grid_size == 0 || j % grid_size == 0)
 			{
-				color_buffer[(i*window_height)+j] = color;
+				color_buffer[(i* window_width)+j] = color;
 			}
 		}
 	}
@@ -16,15 +16,15 @@ void draw_grid(uint32_t *color_buffer, int window_width, int window_height, int 
 
 void draw_rect(uint32_t *color_buffer, int window_width, int window_height, int x, int y, int width, int height, uint32_t color)
 {
-	for(int i = y; i < height; i++)
+	for(int i = y; i < height + y; i++)
 	{
-		for(int j = x; j < width; j++)
+		for(int j = x; j < width + x; j++)
 		{
-			color_buffer[(i*window_height)+j] = color;
+			color_buffer[(i* window_width)+j] = color;
 		}
 	}
 }
-void draw_pixel(uint32_t *color_buffer, int window_height, int x, int y, uint32_t color)
+void draw_pixel(uint32_t *color_buffer, int window_width, int x, int y, uint32_t color)
 { 
-    color_buffer[(window_height * y) + x] = color;
+    color_buffer[(window_width * y) + x] = color;
 }
