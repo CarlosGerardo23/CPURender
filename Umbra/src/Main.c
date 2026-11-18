@@ -40,13 +40,13 @@ void update(void)
 }
 void render(void)
 {
-	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
-	render_color_buffer(window_width);
 	clear_color_buffer(0xFF000000, window_width, window_height);
 	draw_rect(color_buffer,window_width,window_height,20,50,100,100, 0xFF00FFFF);
-	draw_pixel(color_buffer, window_height, 20, 20, 0xFFFFFF00);
-	//draw_grid(color_buffer, window_width, window_height, 10, 0xFF000000);
+	draw_pixel(color_buffer, window_width, 20, 20, 0xFFFFFF00);
+	draw_grid(color_buffer, window_width, window_height, 50, 0xFFFFFFFF);
+	render_color_buffer(window_width);
 	SDL_RenderPresent(renderer);
 }
 void game_loop(void)
