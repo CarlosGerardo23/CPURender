@@ -12,9 +12,9 @@
 #include <emscripten/emscripten.h>
 #endif
 
-const int N_POINTS = 9 * 9 * 9;
+//const int N_POINTS = ;
 bool is_running;
-vec3_t cube_points[N_POINTS];
+vec3_t cube_points[9 * 9 * 9];
 
 void setup_cube(void)
 {
