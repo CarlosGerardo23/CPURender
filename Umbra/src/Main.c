@@ -12,8 +12,26 @@
 #include <emscripten/emscripten.h>
 #endif
 
+const int N_POINTS = 9 * 9 * 9;
 bool is_running;
+vec3_t cube_points[N_POINTS];
 
+void setup_cube(void)
+{
+	int point_count = 0;
+	for (int i = -1; i <= 1; i += 0.25)
+	{
+		for (int j = -1; j <= 1; j += 0.25)
+		{
+			for (int k = -1; k <= 1; k += 0.25)
+			{
+				vec3_t new_point = {.x = i, .y = j, .z = k};
+				cube_points[point_count] = new_point;
+				point_count++;
+			}
+		}
+	}
+}
 void process_input()
 {
 	SDL_Event event;
@@ -37,14 +55,14 @@ void process_input()
 
 void update(void)
 {
-	//TO DO:
+	// TO DO:
 }
 void render(void)
 {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 	clear_color_buffer(0xFF000000, window_width, window_height);
-	draw_rect(color_buffer,window_width,window_height,20,50,100,100, 0xFF00FFFF);
+	draw_rect(color_buffer, window_width, window_height, 20, 50, 100, 100, 0xFF00FFFF);
 	draw_pixel(color_buffer, window_width, 20, 20, 0xFFFFFF00);
 	draw_grid(color_buffer, window_width, window_height, 50, 0xFFFFFFFF);
 	render_color_buffer(window_width);
@@ -71,10 +89,11 @@ void destroy(void)
 	destroy_window();
 	SDL_Quit();
 }
-int main(int argc, char* args[])
+int main(int argc, char *args[])
 {
 	is_running = initialize();
 	setup_texture(window_width, window_height);
+	setup_cube();
 
 	vec3_t test = {2.0, 1.0, -1.0};
 #ifdef __EMSCRIPTEN__
@@ -85,6 +104,6 @@ int main(int argc, char* args[])
 		game_loop();
 	}
 #endif
-    destroy();
+	destroy();
 	return 0;
 }
