@@ -19,11 +19,11 @@ vec3_t cube_points[9 * 9 * 9];
 void setup_cube(void)
 {
 	int point_count = 0;
-	for (int i = -1; i <= 1; i += 0.25)
+	for (float i = -1; i <= 1; i += 0.25)
 	{
-		for (int j = -1; j <= 1; j += 0.25)
+		for (float j = -1; j <= 1; j += 0.25)
 		{
-			for (int k = -1; k <= 1; k += 0.25)
+			for (float k = -1; k <= 1; k += 0.25)
 			{
 				vec3_t new_point = {.x = i, .y = j, .z = k};
 				cube_points[point_count] = new_point;
