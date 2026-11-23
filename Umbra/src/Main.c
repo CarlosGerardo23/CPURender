@@ -76,8 +76,8 @@ void update_cube(void)
 	{
 		vec3_t point = cube_points[i];
 		vec3_t transformed_point = rotate_x(point, cube_rotation.x);
-		transformed_point = rotate_y(point, cube_rotation.y);
-		transformed_point = rotate_z(point, cube_rotation.z);
+		transformed_point = rotate_y(transformed_point, cube_rotation.y);
+		transformed_point = rotate_z(transformed_point, cube_rotation.z);
 
 		transformed_point.z -= camera_position.z;
 
