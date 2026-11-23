@@ -74,7 +74,7 @@ void update_cube(void)
 
 	for (size_t i = 0; i < N_POINTS; i++)
 	{
-		vec3_t point = rotate_x(cube_points[i],
+		vec3_t point = rotate_z(cube_points[i],
 								cube_rotation.x);
 		// point = rotate_x(point, cube_rotation.x);
 		// point = rotate_z(point, cube_rotation.z);
