@@ -20,11 +20,12 @@ void draw_rect(uint32_t *color_buffer, int window_width, int window_height, int 
 	{
 		for(int j = x; j < width + x; j++)
 		{
-			color_buffer[(i* window_width)+j] = color;
+			draw_pixel(color_buffer, window_width, x, y, color);
 		}
 	}
 }
 void draw_pixel(uint32_t *color_buffer, int window_width, int x, int y, uint32_t color)
 { 
+	if(x >= 0 && y >= 0 && x < window_width)
     color_buffer[(window_width * y) + x] = color;
 }
