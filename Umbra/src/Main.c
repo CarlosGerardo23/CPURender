@@ -74,14 +74,14 @@ void update_cube(void)
 
 	for (size_t i = 0; i < N_POINTS; i++)
 	{
-		vec3_t point = rotate_x(cube_points[i],
-								cube_rotation.x);
-		 point = rotate_y(point, cube_rotation.y);
-		 point = rotate_z(point, cube_rotation.z);
+		vec3_t point = cube_points[i];
+		vec3_t transformed_point = rotate_x(point, cube_rotation.x);
+		transformed_point = rotate_y(point, cube_rotation.y);
+		transformed_point = rotate_z(point, cube_rotation.z);
 
-		point.z -= camera_position.z;
+		transformed_point.z -= camera_position.z;
 
-		projected_points[i] = project(point);
+		projected_points[i] = project(transformed_point);
 	}
 }
 
