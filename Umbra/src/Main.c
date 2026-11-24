@@ -105,7 +105,7 @@ void update(void)
 void render(void)
 {
 	clear_color_buffer(0xFF000000, window_width, window_height);
-	draw_grid(color_buffer, window_width, window_height, 5, 0x80808080);
+	draw_grid(color_buffer, window_width, window_height, 10, 0x40404040);
 	render_cube();
 	// draw_rect(color_buffer, window_width, window_height, 20, 50, 100, 100, 0xFF00FFFF);
 	// draw_pixel(color_buffer, window_width, 20, 20, 0xFFFFFF00);
