@@ -97,7 +97,12 @@ void render_cube(void)
 }
 void update(void)
 {
-	while(!SDL_TICKS_PASSED(SDL_GetTicks(), previous_frame_time + FRAME_TARGET_TIME));
+	int time_to_wait = FRAME_TARGET_TIME - (SDL_GetTicks() - previous_frame_time);
+
+	if(time_to_wait > 0 && time_to_wait <= FRAME_TARGET_TIME)
+	{
+		SDL_Delay(time_to_wait);
+	}
 	previous_frame_time = SDL_GetTicks();
 	// TO DO:
 	update_cube();
@@ -105,7 +110,7 @@ void update(void)
 void render(void)
 {
 	clear_color_buffer(0xFF000000, window_width, window_height);
-	draw_grid(color_buffer, window_width, window_height, 10, 0x40404040);
+	draw_grid(color_buffer, window_width, window_height, 15, 0x40404040);
 	render_cube();
 	// draw_rect(color_buffer, window_width, window_height, 20, 50, 100, 100, 0xFF00FFFF);
 	// draw_pixel(color_buffer, window_width, 20, 20, 0xFFFFFF00);
@@ -139,7 +144,6 @@ int main(int argc, char *args[])
 	setup_texture(window_width, window_height);
 	setup_cube();
 
-	vec3_t test = {2.0, 1.0, -1.0};
 #ifdef __EMSCRIPTEN__
 	emscripten_set_main_loop(game_loop, 0, 1);
 #else
