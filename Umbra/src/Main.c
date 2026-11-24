@@ -21,6 +21,8 @@ vec2_t projected_points[N_POINTS];
 
 vec3_t camera_position = {0, 0, -10};
 vec3_t cube_rotation = {0, 0, 0};
+
+int previous_frame_time = 0;
 void setup_cube(void)
 {
 	int point_count = 0;
@@ -95,16 +97,18 @@ void render_cube(void)
 }
 void update(void)
 {
+	while(!SDL_TICKS_PASSED(SDL_GetTicks(), previous_frame_time + FRAME_TARGET_TIME));
+	previous_frame_time = SDL_GetTicks();
 	// TO DO:
 	update_cube();
 }
 void render(void)
 {
 	clear_color_buffer(0xFF000000, window_width, window_height);
+	draw_grid(color_buffer, window_width, window_height, 5, 0x80808080);
 	render_cube();
 	// draw_rect(color_buffer, window_width, window_height, 20, 50, 100, 100, 0xFF00FFFF);
 	// draw_pixel(color_buffer, window_width, 20, 20, 0xFFFFFF00);
-	// draw_grid(color_buffer, window_width, window_height, 5, 0xFFFFFFFF);
 	render_color_buffer(window_width);
 	SDL_RenderPresent(renderer);
 }

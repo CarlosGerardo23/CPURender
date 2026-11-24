@@ -6,7 +6,7 @@ void draw_grid(uint32_t *color_buffer, int window_width, int window_height, int 
 	{
 		for (int j = 0; j < window_width; j++)
 		{
-			if (i % grid_size == 0 || j % grid_size == 0)
+			if (i % grid_size == 0 && j % grid_size == 0)
 			{
 				color_buffer[(i* window_width)+j] = color;
 			}

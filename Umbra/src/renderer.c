@@ -1,4 +1,5 @@
 #include "renderer.h"
+
 uint32_t* color_buffer = NULL;
 SDL_Texture* color_buffer_texture = NULL;
 SDL_Renderer* renderer = NULL; 
